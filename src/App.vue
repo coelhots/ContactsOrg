@@ -72,6 +72,7 @@ export default {
     sendAuthorizedApiRequest(requestDetails) {
       this.currentApiRequest = requestDetails;
       if (this.isAuthorized) {
+        // Make API request
         this.$gapi.client.request(requestDetails);
         this.currentApiRequest = {};
       } else {
