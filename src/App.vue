@@ -34,8 +34,20 @@
           </thead>
           <tbody>
             <tr v-for="(contact, index) in contacts" :key="index">
-              <td>{{ contact.names[0].displayName }}</td>
-              <td>{{ contact.emailAddresses[0].value }}</td>
+              <td>
+                {{
+                  contact.hasOwnProperty("names")
+                    ? contact.names[0].displayName
+                    : "NOT LISTED"
+                }}
+              </td>
+              <td>
+                {{
+                  contact.hasOwnProperty("emailAddresses")
+                    ? contact.emailAddresses[0].value
+                    : "NOT LISTED"
+                }}
+              </td>
             </tr>
           </tbody>
         </template>
@@ -87,7 +99,7 @@ export default {
           personFields: "names,emailAddresses",
         })
         .then((res) => {
-          //console.log(res);
+          console.log(res);
           this.contacts = res.result.connections;
         });
     },
