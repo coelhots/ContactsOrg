@@ -19,48 +19,59 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <div class="my-2">
-        <button
-          v-if="isAuthorized == true"
-          v-on:click="getContacts()"
-          type="button"
-          class="v-btn v-btn--is-elevated v-btn--has-bg theme--dark v-size--x-large success"
-        >
-          <span class="v-btn__content"> Get Contacts </span>
-        </button>
+      <div class="v-container__wrap">
+        <div class="container main-container">
+          <div id="home-card" class="v-card v-sheet theme--light elevation-2">
+            <div class="v-card__title display-2 font-weight-thin">
+              Your Organizer Area
+            </div>
+            <div class="v-card__text pa-0">
+              <div class="button">
+                <button
+                  v-if="isAuthorized == true"
+                  v-on:click="getContacts()"
+                  type="button"
+                  class="v-btn v-btn--is-elevated v-btn--has-bg theme--dark v-size--x-large success"
+                >
+                  <span class="v-btn__content"> Get Contacts </span>
+                </button>
+              </div>
+            </div>
+            <v-simple-table>
+              <template v-slot:default>
+                <thead>
+                  <tr>
+                    <th class="text-left">
+                      Name
+                    </th>
+                    <th class="text-left">
+                      Email
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(contact, index) in contacts" :key="index">
+                    <td>
+                      {{
+                        contact.hasOwnProperty("names")
+                          ? contact.names[0].displayName
+                          : "NOT LISTED"
+                      }}
+                    </td>
+                    <td>
+                      {{
+                        contact.hasOwnProperty("emailAddresses")
+                          ? contact.emailAddresses[0].value
+                          : "NOT LISTED"
+                      }}
+                    </td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
+          </div>
+        </div>
       </div>
-      <v-simple-table>
-        <template v-slot:default>
-          <thead>
-            <tr>
-              <th class="text-left">
-                Name
-              </th>
-              <th class="text-left">
-                Email
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(contact, index) in contacts" :key="index">
-              <td>
-                {{
-                  contact.hasOwnProperty("names")
-                    ? contact.names[0].displayName
-                    : "NOT LISTED"
-                }}
-              </td>
-              <td>
-                {{
-                  contact.hasOwnProperty("emailAddresses")
-                    ? contact.emailAddresses[0].value
-                    : "NOT LISTED"
-                }}
-              </td>
-            </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
     </v-main>
   </v-app>
 </template>
@@ -125,3 +136,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 16px;
+}
+</style>

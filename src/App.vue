@@ -10,5 +10,8 @@ export default {
   components: {
     ContactOrganizer,
   },
+  created() {
+    document.title = "Contact Organizer";
+  },
 };
 </script>
