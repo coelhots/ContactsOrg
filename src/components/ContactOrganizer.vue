@@ -29,7 +29,7 @@
               >
                 <div class="v-card__title display-2 font-weight-thin">
                   <h1 class="display-2 font-weight-black text-xs-center">
-                    Your Organizer Area
+                    Organizer Area
                   </h1>
                 </div>
                 <div class="v-card__text pa-0">
