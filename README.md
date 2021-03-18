@@ -8,7 +8,7 @@ The objective of this test is grab all contacts from Google account, to list and
 
 ## Links
 
-[GitHub](https://github.com/coelhots/ContactsOrg) and[Firebase Host](https://super-orgcontact-1615488826604.web.app)
+[GitHub](https://github.com/coelhots/ContactsOrg) and [Firebase Host](https://super-orgcontact-1615488826604.web.app)
 
 ## Available Scripts
 
