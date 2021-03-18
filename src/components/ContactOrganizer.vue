@@ -2,11 +2,11 @@
   <v-app>
     <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
-        <v-icon large color="black">
+        <v-icon large color="white">
           mdi-card-account-mail
         </v-icon>
       </div>
-
+      <v-toolbar-title class="ml-3">Organizer Area</v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-btn v-if="isAuthorized == false" v-on:click="login()" text>
@@ -18,32 +18,30 @@
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-main>
+    <v-main class="card__organizer">
       <div class="v-container">
         <div class="container main-container">
+          <h2 v-if="isAuthorized == false" class="text-center">
+            Please, login first!
+          </h2>
           <div class="layout mb-5 column justify-center alighn-center">
             <div class="flex sx12 sm8 md6">
+              <div class="v-card__text pa-0 mb-6">
+                <div class="button">
+                  <button
+                    v-if="isAuthorized == true"
+                    v-on:click="getContacts()"
+                    type="button"
+                    class="v-btn v-btn--is-elevated v-btn--has-bg theme--dark v-size--x-large success"
+                  >
+                    <span class="v-btn__content"> Get Contacts </span>
+                  </button>
+                </div>
+              </div>
               <div
                 id="home-card"
                 class="v-card v-sheet theme--light elevation-2"
               >
-                <div class="v-card__title display-2 font-weight-thin">
-                  <h1 class="display-2 font-weight-black text-xs-center">
-                    Organizer Area
-                  </h1>
-                </div>
-                <div class="v-card__text pa-0">
-                  <div class="button">
-                    <button
-                      v-if="isAuthorized == true"
-                      v-on:click="getContacts()"
-                      type="button"
-                      class="v-btn v-btn--is-elevated v-btn--has-bg theme--dark v-size--x-large success"
-                    >
-                      <span class="v-btn__content"> Get Contacts </span>
-                    </button>
-                  </div>
-                </div>
                 <v-simple-table>
                   <template v-slot:default>
                     <thead>
@@ -151,5 +149,10 @@ export default {
   justify-content: center;
   align-items: center;
   margin-top: 16px;
+}
+.card__organizer {
+  margin-top: 16px;
+  width: 80%;
+  margin: 0 auto;
 }
 </style>
