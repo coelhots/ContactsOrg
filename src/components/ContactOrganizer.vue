@@ -28,7 +28,9 @@
                 class="v-card v-sheet theme--light elevation-2"
               >
                 <div class="v-card__title display-2 font-weight-thin">
-                  Your Organizer Area
+                  <h1 class="display-2 font-weight-black text-xs-center">
+                    Your Organizer Area
+                  </h1>
                 </div>
                 <div class="v-card__text pa-0">
                   <div class="button">
